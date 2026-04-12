@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2 class="mb-4">Panel Administrativo</h2>
+
+<div class="row g-4">
+
+    <!-- Total Personas -->
+    <div class="col-md-3">
+        <div class="card-box bg-primary">
+            <h5>Total Personas</h5>
+            <h2>{{ total_personas }}</h2>
+            <i class="fas fa-users fa-2x"></i>
+        </div>
+    </div>
+
+    <!-- Catedráticos -->
+    <div class="col-md-3">
+        <div class="card-box bg-success">
+            <h5>Catedráticos</h5>
+            <h2>{{ total_docentes }}</h2>
+            <i class="fas fa-chalkboard-teacher fa-2x"></i>
+        </div>
+    </div>
+
+    <!-- Administrativos -->
+    <div class="col-md-3">
+        <div class="card-box bg-warning">
+            <h5>Administrativos</h5>
+            <h2>{{ total_admins }}</h2>
+            <i class="fas fa-user-tie fa-2x"></i>
+        </div>
+    </div>
+
+    <!-- Estudiantes -->
+    <div class="col-md-3">
+        <div class="card-box bg-danger">
+            <h5>Estudiantes</h5>
+            <h2>{{ total_estudiantes }}</h2>
+            <i class="fas fa-user-graduate fa-2x"></i>
+        </div>
+    </div>
+
+</div>
+
+<hr class="my-5">
+
+<div class="card p-4 shadow-sm">
+    <h4>Resumen del Sistema</h4>
+    <p>
+        Este panel permite visualizar el estado general del sistema biométrico.
+        Desde aquí puede gestionar registros, controlar usuarios y administrar la información institucional.
+    </p>
+</div>
+
+{% endblock %}

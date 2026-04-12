@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h3>Listado de Cursos</h3>
+        <a href="{{ url_for('crear_curso') }}" class="btn btn-primary">Nuevo Curso</a>
+    </div>
+
+    <div class="card shadow">
+        <div class="card-body">
+            <table class="table table-bordered table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Curso</th>
+                        <th>Carrera</th>
+                        <th>Sección</th>
+                        <th>Catedrático</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for curso in cursos %}
+                    <tr>
+                        <td>{{ curso[0] }}</td>
+                        <td>{{ curso[1] }}</td>
+                        <td>{{ curso[2] }}</td>
+                        <td>{{ curso[3] if curso[3] else '-' }}</td>
+                        <td>
+                            {% if curso[4] %}
+                                {{ curso[4] }} {{ curso[5] }}
+                            {% else %}
+                                Sin asignar
+                            {% endif %}
+                        </td>
+                        <td>
+                            <a href="{{ url_for('inscribir_estudiantes', id_curso=curso[0]) }}" class="btn btn-sm btn-success">
+                                Inscribir alumnos
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="card shadow">
+        <div class="card-header bg-success text-white">
+            <h4 class="mb-0">Inscribir estudiantes al curso</h4>
+        </div>
+        <div class="card-body">
+            <p><strong>Curso:</strong> {{ curso[1] }}</p>
+            <p><strong>Carrera:</strong> {{ curso[2] }}</p>
+            <p><strong>Sección:</strong> {{ curso[3] if curso[3] else '-' }}</p>
+
+            <form method="POST">
+                <table class="table table-bordered table-hover">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Seleccionar</th>
+                            <th>Carnet</th>
+                            <th>Nombre</th>
+                            <th>Correo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for e in estudiantes %}
+                        <tr>
+                            <td>
+                                <input type="checkbox" name="estudiantes" value="{{ e[0] }}"
+                                {% if e[0] in inscritos %}checked{% endif %}>
+                            </td>
+                            <td>{{ e[1] }}</td>
+                            <td>{{ e[2] }} {{ e[3] }}</td>
+                            <td>{{ e[4] }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+                <button type="submit" class="btn btn-primary">Guardar inscripciones</button>
+                <a href="{{ url_for('listar_cursos') }}" class="btn btn-secondary">Volver</a>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

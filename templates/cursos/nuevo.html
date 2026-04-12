@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">Registrar Curso</h4>
+        </div>
+        <div class="card-body">
+            <form method="POST">
+
+                <div class="mb-3">
+                    <label class="form-label">Nombre del curso</label>
+                    <input type="text" name="nombre_curso" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Carrera</label>
+                    <input type="text" name="carrera" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Sección</label>
+                    <input type="text" name="seccion" class="form-control">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Catedrático</label>
+                    <select name="id_catedratico" class="form-select" required>
+                        <option value="">Seleccione un catedrático</option>
+                        {% for c in catedraticos %}
+                        <option value="{{ c[0] }}">{{ c[1] }} {{ c[2] }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-success">Guardar curso</button>
+                <a href="{{ url_for('listar_cursos') }}" class="btn btn-secondary">Cancelar</a>
+
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

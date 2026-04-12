@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h3 class="mb-4">Mis Cursos Asignados</h3>
+
+    <div class="row">
+        {% if cursos %}
+            {% for curso in cursos %}
+            <div class="col-md-4 mb-4">
+                <div class="card shadow h-100 border-0">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ curso.nombre_curso }}</h5>
+                        <p class="mb-2"><strong>Carrera:</strong> {{ curso.carrera }}</p>
+                        <p class="mb-3"><strong>Sección:</strong> {{ curso.seccion if curso.seccion else '-' }}</p>
+
+                        <a href="{{ url_for('ver_asistencia_curso', id_curso=curso.id_curso) }}" class="btn btn-primary">
+                            Ver asistencia
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+            <div class="col-12">
+                <div class="alert alert-info">
+                    No tiene cursos asignados actualmente.
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
