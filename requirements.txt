@@ -1,0 +1,14 @@
+Flask
+Werkzeug
+mysql-connector-python
+opencv-python
+numpy
+qrcode
+face_recognition
+fpdf
+smtplib
+email
+threading
+python-dotenv
+Pillow
+requests
